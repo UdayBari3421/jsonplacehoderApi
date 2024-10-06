@@ -18,7 +18,7 @@ function UserList({ users, setFilterdUser, filterdUser, loading }) {
 
   const handleEdit = async (user) => {
     const { id } = user;
-    navigate(`/${id}`, { state: { user } });
+    navigate(`users/${id}`, { state: { user } });
   };
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function UserList({ users, setFilterdUser, filterdUser, loading }) {
       {filterdUser.length > 0 && !loading ? (
         <>
           <span>
-            <h1>User List</h1>
+            <h1>All Users List</h1>
             <button onClick={() => setModal(!modal)}>Create User</button>
           </span>
           <Modal setModal={setModal} setFilterdUser={setFilterdUser} filterdUser={filterdUser} className="modal" style={modal ? { display: "flex" } : { display: "none" }} />

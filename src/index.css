@@ -22,6 +22,20 @@ th,
 td {
   border: 1px solid gray;
   padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: rgb(43, 42, 42) !important;
+  color: white;
+}
+
+table tr:nth-child(odd) {
+  background-color: #16a086;
+}
+
+table tr:nth-child(even) {
+  background-color: #2d3e50;
 }
 
 .main-container {
@@ -111,7 +125,7 @@ form>button {
   gap: 0.5rem;
 }
 
-.action-div button:first-child {
+.action-div button:nth-child(2) {
   background-color: #4CAF50;
   color: white;
   border-radius: 5px;
@@ -138,4 +152,33 @@ button:hover {
 .error {
   color: rgb(225, 104, 104);
   text-align: center;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
+  gap: 1.5rem;
+  width: fit-content;
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  border: 2px solid gray;
+  margin: auto;
+}
+
+.user-details p {
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.backBtn {
+  background-color: #2d3e50;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: none;
+  font-size: large;
+  padding: 10px;
 }
