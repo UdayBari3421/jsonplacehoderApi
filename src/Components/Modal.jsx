@@ -17,9 +17,15 @@ function Modal({ className, style, setFilterdUser, filterdUser, setModal }) {
       setError("Please fill all the fields");
     } else {
       try {
-        const response = await axios.post("https://jsonplaceholder.typicode.com/users", user);
-        setFilterdUser([...filterdUser, response.data]);
-        setModal(false);
+        if (user.name.length < 3) {
+          setError("Name should be more than 3 characters");
+        } else if (user.phone.length < 10) {
+          setError("Phone number should be more than 10 characters");
+        } else if (!user.email.includes("@") || !user.email.includes(".com") || user.email.length < 10) {
+          setError("Email should be valid");
+        } else if (user.website && user.website.length > 3) {
+          setError("Website should be more than 5 characters");
+        }
       } catch (error) {
         setError(error);
       }

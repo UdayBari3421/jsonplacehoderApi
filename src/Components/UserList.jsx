@@ -3,9 +3,11 @@ import UserCard from "./UserCard";
 import { useLocation, useNavigate } from "react-router-dom";
 import Modal from "./Modal.jsx";
 import axios from "axios";
+import searchicn from "../Search.svg";
 
-function UserList({ users, setFilterdUser, filterdUser, loading }) {
+function UserList({ users, setFilterdUser, filterdUser, loading, setLoading }) {
   const [modal, setModal] = React.useState(false);
+  const [searchTerm, setSearchTerm] = React.useState("");
   const navigate = useNavigate();
 
   const location = useLocation();
@@ -29,15 +31,35 @@ function UserList({ users, setFilterdUser, filterdUser, loading }) {
     }
   }, [location]);
 
+  useEffect(() => {
+    const results = users.filter((user) => user.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    setFilterdUser(results);
+    if (!searchTerm) {
+      setFilterdUser(users);
+      setLoading(false);
+    }
+
+    if (filterdUser.length === 0) {
+      setLoading(false);
+    }
+  }, [filterdUser, searchTerm]);
+
   return (
     <div className="content">
       {filterdUser.length > 0 && !loading ? (
         <>
-          <span>
-            <h1>All Users List</h1>
-            <button onClick={() => setModal(!modal)}>Create User</button>
-          </span>
-          <Modal setModal={setModal} setFilterdUser={setFilterdUser} filterdUser={filterdUser} className="modal" style={modal ? { display: "flex" } : { display: "none" }} />
+          <div className="container">
+            <span>
+              <h1>All Users List</h1>
+              <button onClick={() => setModal(!modal)}>Create User</button>
+            </span>
+            <Modal setModal={setModal} setFilterdUser={setFilterdUser} filterdUser={filterdUser} className="modal" style={modal ? { display: "flex" } : { display: "none" }} />
+
+            <div className="searchBox">
+              <img src={searchicn} height={"20px"} />
+              <input type="text" placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+            </div>
+          </div>
           <div>
             {users?.length > 0 && (
               <table>
@@ -59,8 +81,21 @@ function UserList({ users, setFilterdUser, filterdUser, loading }) {
             )}
           </div>
         </>
+      ) : searchTerm ? (
+        <div className="container">
+          <span>
+            <h1>All Users List</h1>
+            <button onClick={() => setModal(!modal)}>Create User</button>
+          </span>
+          <Modal setModal={setModal} setFilterdUser={setFilterdUser} filterdUser={filterdUser} className="modal" style={modal ? { display: "flex" } : { display: "none" }} />
+
+          <div className="searchBox">
+            <img src={searchicn} height={"20px"} />
+            <input type="text" placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+          </div>
+        </div>
       ) : (
-        <div className="loader">loading...</div>
+        <h1>Loading...</h1>
       )}
     </div>
   );

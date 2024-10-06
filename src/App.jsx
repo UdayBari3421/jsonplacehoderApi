@@ -30,7 +30,7 @@ function App() {
     <div className="main-container">
       <Router>
         <Routes>
-          <Route path="/" element={<UserList loading={loading} users={users} setFilterdUser={setFilterdUser} filterdUser={filterdUser} />} />
+          <Route path="/" element={<UserList setLoading={setLoading} loading={loading} users={users} setFilterdUser={setFilterdUser} filterdUser={filterdUser} />} />
           <Route path="users/:id" element={<EditUser />} />
           <Route path="users/:id/view" element={<UserDetails />} />
           <Route path="*" element={<h1>Not Found</h1>} />
