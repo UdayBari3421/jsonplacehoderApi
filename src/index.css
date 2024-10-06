@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: rgb(25, 25, 25);
+  color: white;
+}
+
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid gray;
+  padding: 10px;
+}
+
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  min-height: 100vh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.content span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
+  width: 100%;
+}
+
+.content span button {
+  background-color: #4c89af;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: none;
+}
+
+.modal {
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.658);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 50%;
+  padding: 1.5rem;
+  background-color: #484848;
+  border-radius: 5px;
+}
+
+form input {
+  padding: 8px;
+  border-radius: 5px;
+  font-size: large;
+  border: none;
+}
+
+form>span button {
+  background-color: #f44336;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: none;
+  font-size: large;
+}
+
+form>button {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: none;
+  font-size: large;
+  padding: 10px;
+}
+
+.action-div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.action-div button:first-child {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: none;
+}
+
+.action-div button:last-child {
+  background-color: #f44336;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.loader {
+  font-size: 44px;
+}
