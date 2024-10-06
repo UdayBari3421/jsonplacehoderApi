@@ -134,3 +134,8 @@ button:hover {
 .loader {
   font-size: 44px;
 }
+
+.error {
+  color: rgb(225, 104, 104);
+  text-align: center;
+}
